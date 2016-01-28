@@ -17,15 +17,15 @@
         android:layout_height="wrap_content"
         android:text="Create Account"
         android:id="@+id/newAccount"
-        android:onClick="login"
-        android:layout_below="@+id/Login"
+        android:layout_below="@+id/login"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/Login"
+        android:onClick="login"
+        android:id="@+id/login"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -46,7 +46,7 @@
         android:hint="Password"
         android:ems="10"
         android:id="@+id/password"
-        android:layout_above="@+id/Login"
+        android:layout_above="@+id/login"
         android:layout_alignLeft="@+id/username"
         android:layout_alignStart="@+id/username" />
 </RelativeLayout>
