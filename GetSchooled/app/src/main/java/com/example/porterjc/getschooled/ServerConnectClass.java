@@ -26,7 +26,7 @@ public class ServerConnectClass {
         try {
             Class.forName(clazz);
             URL = "jdbc:jtds:sqlserver://" + ip + ";"
-                    + "databaseName=" + dataB + ";user=GetSchooledUser;password=password;";
+                    + "databaseName=" + dataB + ";user=GetSchooledUser;password=getschooledpassword;";
             connection = DriverManager.getConnection(URL);
         } catch (SQLException se) {
             Log.e("ERRO", se.getMessage());
