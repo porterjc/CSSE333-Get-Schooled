@@ -51,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
                 if (con != null) {
                     try {
                         username.setText(con.getCatalog());
-                        String query = "";
-                        //Statement stmt = con.createStatement();
-                        //ResultSet rs = stmt.executeQuery(query);
+                        String query = "select username as name from Account where username='JackPorter'";
+                        Statement stmt = con.createStatement();
+                        ResultSet rs = stmt.executeQuery(query);
+                        //username.setText(rs);
                         //login(v);
                     }
                     catch (SQLException mSQLException) {
