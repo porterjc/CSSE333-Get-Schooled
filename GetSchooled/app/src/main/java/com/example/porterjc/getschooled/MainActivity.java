@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLClientInfoException;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
@@ -41,55 +42,26 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        createAccB.setOnClickListener(new View.OnClickListener() {
+        loginB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login(v);
                 Connection con = connection.connect();
                 if (con != null) {
-                    try {
-                        username.setText(con.getCatalog());
-                        String query = "select username as name from Account where username='JackPorter'";
-                        Statement stmt = con.createStatement();
-                        ResultSet rs = stmt.executeQuery(query);
-                        //username.setText(rs);
-                        //login(v);
-                    }
-                    catch (SQLException mSQLException) {
-                        if(mSQLException instanceof SQLClientInfoException){
-                            //some toast message to user.
-                        }else if(mSQLException instanceof SQLDataException) {
-                            //some toast message to user.
-                        }else{
-
-                        }
-                    }
+                    login(con);
                 }
             }
         });
 
-        loginB.setOnClickListener(new View.OnClickListener() {
+        createAccB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login(v);
                 Connection con = connection.connect();
                 if (con != null) {
                     username.setText("It worked!");
                     String query = "";
                     //Statement stmt = con.createStatement();
                     //ResultSet rs = stmt.executeQuery(query);
-                    login(v);
                 }
-            }
-        });
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
     }
@@ -116,19 +88,42 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View view) {
-        DialogFragment dialogFragment = new DialogFragment() {
-            @Override
-            public Dialog onCreateDialog(Bundle savedInstanceState) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        getActivity());
-                // Inflate View
-                LayoutInflater inflater = getActivity().getLayoutInflater();
-                View view = inflater.inflate(R.layout.top_student, null);
-                builder.setView(view);
-                return builder.create();
+    public void login(Connection con) {
+        try {
+            //username.setText(con.getCatalog());
+            String query = "EXEC AccountLoginCheck '" + username + "','" + password + "'";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setEscapeProcessing(true);
+            stmt.setQueryTimeout(5);
+            ResultSet rs = stmt.executeQuery();
+            int valid;
+            //if (rs.next()) {
+                valid = rs.getInt(0);
+                username.setText("Yes");
+            //}
+        }
+        catch (SQLException mSQLException) {
+            if(mSQLException instanceof SQLClientInfoException){
+                //some toast message to user.
+            }else if(mSQLException instanceof SQLDataException) {
+                //some toast message to user.
+            }else{
+
             }
-        };
-        dialogFragment.show(getFragmentManager(), null);
+        }
+
+//        DialogFragment dialogFragment = new DialogFragment() {
+//            @Override
+//            public Dialog onCreateDialog(Bundle savedInstanceState) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(
+//                        getActivity());
+//                // Inflate View
+//                LayoutInflater inflater = getActivity().getLayoutInflater();
+//                View view = inflater.inflate(R.layout.top_student, null);
+//                builder.setView(view);
+//                return builder.create();
+//            }
+//        };
+//        dialogFragment.show(getFragmentManager(), null);
     }
 }
