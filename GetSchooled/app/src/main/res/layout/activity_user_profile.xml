@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/profileUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="113dp"
+        android:text="@string/Username"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/textColor" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:text="@string/Profile_Picture_Here"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/textColor" />
+
+    <TextView
+        android:id="@+id/schoolsProfileTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:text="@string/Schools"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/textColor" />
+</RelativeLayout>
