@@ -24,14 +24,12 @@ public class ServerConnectClass {
         Connection connection = null;
         String URL = null;
         try {
-            Class.forName(clazz);
+            Class.forName(clazz).newInstance();
             URL = "jdbc:jtds:sqlserver://" + ip + ";"
                     + "databaseName=" + dataB + ";user=GetSchooledUser;password=getschooledpassword;";
             connection = DriverManager.getConnection(URL);
         } catch (SQLException se) {
             Log.e("ERRO", se.getMessage());
-        } catch (ClassNotFoundException e) {
-            Log.e("ERRO", e.getMessage());
         } catch (Exception e) {
             Log.e("ERRO", e.getMessage());
         }

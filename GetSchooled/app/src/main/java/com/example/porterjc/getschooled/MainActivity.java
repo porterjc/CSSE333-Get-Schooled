@@ -91,11 +91,12 @@ public class MainActivity extends AppCompatActivity {
     public void login(Connection con) {
         try {
             //username.setText(con.getCatalog());
-            String query = "EXEC AccountLoginCheck '" + username + "','" + password + "'";
-            PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setEscapeProcessing(true);
-            stmt.setQueryTimeout(5);
-            ResultSet rs = stmt.executeQuery();
+            //String query = "EXEC AccountLoginCheck '" + username + "','" + password + "'";
+            String query = "select * from Account";
+            Statement stmt = con.createStatement();
+            //stmt.setEscapeProcessing(true);
+            //stmt.setQueryTimeout(5);
+            ResultSet rs = stmt.executeQuery(query);
             int valid;
             //if (rs.next()) {
                 valid = rs.getInt(0);
