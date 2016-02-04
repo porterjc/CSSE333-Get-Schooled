@@ -55,13 +55,7 @@ public class MainActivity extends AppCompatActivity {
         createAccB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Connection con = connection.connect();
-                if (con != null) {
-                    username.setText("It worked!");
-                    String query = "";
-                    //Statement stmt = con.createStatement();
-                    //ResultSet rs = stmt.executeQuery(query);
-                }
+                setContentView(R.layout.activity_create_new_account);
             }
         });
     }
