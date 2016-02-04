@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.password);
         loginB = (Button)findViewById(R.id.login);
         createAccB = (Button)findViewById(R.id.newAccount);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         loginB.setOnClickListener(new View.OnClickListener() {
             @Override
