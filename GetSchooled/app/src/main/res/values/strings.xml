@@ -9,7 +9,7 @@
     <string name="Profile_Picture">Profile Picture</string>
     <string name="Set_Profile_Picture"> Set Profile Picture</string>
     <string name="Create">Create</string>
-    <string name="Profile_Picture_Here">The user's profile picture will go here</string>
+    <string name="Profile_Picture_Here">The user\'s profile picture will go here</string>
     <string name="Schools">Schools</string>
 
 </resources>
