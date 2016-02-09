@@ -2,7 +2,6 @@ package com.example.porterjc.getschooled;
 
 import android.os.StrictMode;
 import android.util.Log;
-
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -17,8 +16,8 @@ public class ServerConnectClass {
     String clazz = "net.sourceforge.jtds.jdbc.Driver";
     String micClazz = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     String dataB = "GetSchooledDatabase";
-    String usern;
-    String passw;
+    String usern = "GetSchooledUser";
+    String passw = "getschooledpassword";
 
     public Connection connect() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -28,12 +27,12 @@ public class ServerConnectClass {
         Connection connection = null;
         String URL = null;
         try {
-            Driver d = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            Class.forName(clazz);
            // Class.forName(micClazz);
             System.out.println("This works right?");
-            URL = "jdbc:sqlserver://" + ip + ";"
-                    + "databaseName=" + dataB + ";user=GetSchooledUser;password=getschooledpassword;";
-            connection = d.connect(URL, new Properties());
+            URL = "jdbc:jtds:sqlserver://" + ip + "/"
+                     + dataB; //user=GetSchooledUser;password=getschooledpassword;";
+            connection = DriverManager.getConnection(URL, usern, passw);
         } catch (SQLException se) {
             Log.e("ERRO", se.getMessage());
         } catch (Exception e) {

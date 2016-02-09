@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             ResultSet rs = stmt.executeQuery(query);
             int valid;
             //if (rs.next()) {
-                valid = rs.getInt(0);
+                //valid = rs.getInt(0);
                 username.setText("Yes");
             //}
         }
