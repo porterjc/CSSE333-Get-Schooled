@@ -2,27 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="2"
     android:background="@color/background">
 
     <TextView
         android:id="@+id/profileUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/userProfilePicture"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="113dp"
         android:text="@string/Username"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/textColor" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
-        android:text="@string/Profile_Picture_Here"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/textColor" />
 
@@ -32,8 +21,40 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profileUsername"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Schools"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/textColor" />
+
+    <ImageView
+        android:id="@+id/userProfilePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="150dp"
+        android:maxWidth="150dp"
+        android:src='@drawable/no_profile_picture_wilkin' />
+
+    <ListView
+        android:id="@+id/schoolListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/schoolsProfileTextView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="@string/No_Schools_Yet"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:layout_below="@+id/schoolsProfileTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -1,1 +1,1 @@
-include ':app', ':sqljdbc', ':sqljdbc4', ':local_policy', ':US_export_policy', ':jtds-1.2.7'
+include ':sqljdbc', ':local_policy', ':US_export_policy', ':jtds-1.2.7', ':app', ':sqljdbc4'

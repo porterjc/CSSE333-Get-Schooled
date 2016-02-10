@@ -11,5 +11,6 @@
     <string name="Create">Create</string>
     <string name="Profile_Picture_Here">The user\'s profile picture will go here</string>
     <string name="Schools">Schools</string>
-
+    <string name="No_Schools_Yet">There are currently no Schools to display.</string>
+    <string name="School_Name">School Name</string>
 </resources>
