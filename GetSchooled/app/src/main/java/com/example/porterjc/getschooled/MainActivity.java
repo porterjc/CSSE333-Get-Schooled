@@ -86,23 +86,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(Connection con) {
         try {
-            //username.setText(con.getCatalog());
-            String query = "EXEC AccountLoginCheck '" + username + "','" + password + "'";
-            //String query = "select * from Account";
-            CallableStatement statement = con.prepareCall("call [dbo].[AccountLoginCheck](?, ?)");
-            statement.registerOutParameter(1, Types.INTEGER);
+            PreparedStatement statement = con.prepareStatement("{call [dbo].[AccountLoginCheck](?, ?)}");
+//            statement.registerOutParameter(1, Types.NVARCHAR);
+//            statement.registerOutParameter(2, Types.NVARCHAR);
             statement.setString(1, username.getText().toString());
             statement.setString(2, password.getText().toString());
-            statement.execute();
-            //Statement stmt = con.createStatement();
-            //stmt.setEscapeProcessing(true);
-            //stmt.setQueryTimeout(5);
-            ResultSet rs = statement.getResultSet();
+            boolean rs = statement.execute();
+
             int valid;
-            if (rs == null) {
-                //valid = rs.getInt(0);
-               System.out.println("Yes");
-            }
+            statement.getResultSetType();
+           // System.out.println(statement.execute());
 
             statement.close();
             con.close();
