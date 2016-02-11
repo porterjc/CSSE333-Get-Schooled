@@ -24,7 +24,7 @@ public class CreateAccountActivity extends AppCompatActivity{
     EditText password;
     EditText email;
     Button createAccB;
-    Button setPicB;
+    EditText profilePicture;
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_account);
@@ -32,9 +32,9 @@ public class CreateAccountActivity extends AppCompatActivity{
         username = (EditText) findViewById(R.id.usernameEditText);
         password = (EditText)findViewById(R.id.passwordEditText);
         email = (EditText)findViewById(R.id.emailEditText);
-        //profPic = (EditText)findViewById(R.id.pictureEditText);
         createAccB = (Button)findViewById(R.id.createAccountButton);
-        setPicB = (Button)findViewById(R.id.profilePictureButton);
+        profilePicture = (EditText)findViewById(R.id.profilePictureEditText);
+
 
         createAccB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,13 +43,6 @@ public class CreateAccountActivity extends AppCompatActivity{
                 if (con != null) {
                     createAcc(con);
                 }
-            }
-        });
-
-        setPicB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }
@@ -68,7 +61,7 @@ public class CreateAccountActivity extends AppCompatActivity{
             statement.setString(2, username.getText().toString());
             statement.setString(3, password.getText().toString());
             statement.setString(4, email.getText().toString());
-            statement.setString(5, "");
+            statement.setString(5, profilePicture.getText().toString());
             boolean rs = statement.execute();
 
             int valid = statement.getInt(1);
