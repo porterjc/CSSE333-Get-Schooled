@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:src="@drawable/wilkin"
+        android:src="@drawable/no_profile_picture_wilkin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"

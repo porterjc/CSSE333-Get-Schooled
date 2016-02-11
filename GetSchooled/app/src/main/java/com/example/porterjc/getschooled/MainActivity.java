@@ -3,6 +3,7 @@ package com.example.porterjc.getschooled;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
         createAccB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.activity_create_new_account);
+               creatAcc();
             }
         });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -69,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
+    void creatAcc() {
+        Intent intent = new Intent(this, CreateAccountActivity.class); // create the intent
+        startActivity(intent); // start the activity
+    }
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -86,19 +92,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(Connection con) {
         try {
-            PreparedStatement statement = con.prepareStatement("{call [dbo].[AccountLoginCheck](?, ?)}");
-//            statement.registerOutParameter(1, Types.NVARCHAR);
-//            statement.registerOutParameter(2, Types.NVARCHAR);
-            statement.setString(1, username.getText().toString());
-            statement.setString(2, password.getText().toString());
+            CallableStatement statement = con.prepareCall("{? = call [dbo].[AccountLoginCheck](?, ?)}");
+            statement.registerOutParameter(1, Types.INTEGER);
+            statement.setString(2, username.getText().toString());
+            statement.setString(3, password.getText().toString());
             boolean rs = statement.execute();
 
-            int valid;
-            statement.getResultSetType();
-           // System.out.println(statement.execute());
+            int valid = statement.getInt(1);
 
             statement.close();
             con.close();
+
+            if (valid == 0) {
+//                Intent intent = new Intent( this, ProfileSchoolListAdapter.class ); // create the intent
+//                startActivity(intent); // start the activity
+            } else {
+                //do things like say bad password
+            }
+
         }
         catch (SQLException mSQLException) {
             if(mSQLException instanceof SQLClientInfoException){
