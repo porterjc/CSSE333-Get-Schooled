@@ -13,4 +13,7 @@
     <string name="Schools">Schools</string>
     <string name="No_Schools_Yet">There are currently no Schools to display.</string>
     <string name="School_Name">School Name</string>
+    <string name="About">About</string>
+
+
 </resources>
