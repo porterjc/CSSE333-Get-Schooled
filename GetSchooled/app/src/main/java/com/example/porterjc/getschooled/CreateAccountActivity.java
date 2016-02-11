@@ -1,5 +1,6 @@
 package com.example.porterjc.getschooled;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -77,8 +78,8 @@ public class CreateAccountActivity extends AppCompatActivity{
 
             if (valid == 0) {
                 System.out.println("A new account has probably been added to the DB. ");
-//                Intent intent = new Intent( this, ProfileSchoolListAdapter.class ); // create the intent
-//                startActivity(intent); // start the activity
+                Intent intent = new Intent( this, UserProfileActivity.class ); // create the intent
+                startActivity(intent); // start the activity
             } else {
                 System.out.println("Something is wrong with the input.");
                 //do things like say bad password
