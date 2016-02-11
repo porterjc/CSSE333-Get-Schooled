@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
     Button createAccB;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         connection = new ServerConnectClass();
-        username= (EditText)findViewById(R.id.username);
-        password = (EditText)findViewById(R.id.password);
-        loginB = (Button)findViewById(R.id.login);
-        createAccB = (Button)findViewById(R.id.newAccount);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        loginB = (Button) findViewById(R.id.login);
+        createAccB = (Button) findViewById(R.id.newAccount);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -58,11 +58,10 @@ public class MainActivity extends AppCompatActivity {
         createAccB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               creatAcc();
+                creatAcc();
             }
         });
     }
-
 
 
     @Override
@@ -76,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CreateAccountActivity.class); // create the intent
         startActivity(intent); // start the activity
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -110,15 +110,14 @@ public class MainActivity extends AppCompatActivity {
                 //do things like say bad password
             }
 
-        }
-        catch (SQLException mSQLException) {
-            if(mSQLException instanceof SQLClientInfoException){
+        } catch (SQLException mSQLException) {
+            if (mSQLException instanceof SQLClientInfoException) {
                 mSQLException.printStackTrace();
                 //some toast message to user.
-            }else if(mSQLException instanceof SQLDataException) {
+            } else if (mSQLException instanceof SQLDataException) {
                 mSQLException.printStackTrace();
                 //some toast message to user.
-            }else{
+            } else {
                 mSQLException.printStackTrace();
             }
         }
