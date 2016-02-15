@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.porterjc.getschooled.UserProfileActivity">
+
+    <item
+        android:id="@+id/change_password"
+        android:title="@string/Change_Password"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/change_profile_picture"
+        android:title="@string/Change_Profile_Picture"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/deleteAccount"
+        android:title="@string/Delete_Account"
+        app:showAsAction="collapseActionView" />
+</menu>

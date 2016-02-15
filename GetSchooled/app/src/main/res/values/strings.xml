@@ -14,6 +14,16 @@
     <string name="No_Schools_Yet">There are currently no Schools to display.</string>
     <string name="School_Name">School Name</string>
     <string name="About">About</string>
+    <string name="Enter">Enter</string>
+    <string name="About_Description">This app is designed to encourage young children to be creative
+        by running their own school! They can create classes, teachers, and even students to form
+        their own dream school.</string>
+    <string name="Change_Password">Change Password</string>
+    <string name="Change_Profile_Picture">Change Profile Picture</string>
+    <string name="Delete_Account">Delete Account</string>
+
+
+
 
 
 </resources>

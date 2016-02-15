@@ -3,13 +3,10 @@ package com.example.porterjc.getschooled;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,13 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
 import java.sql.SQLClientInfoException;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.Types;
 
 public class MainActivity extends AppCompatActivity {
@@ -58,22 +52,16 @@ public class MainActivity extends AppCompatActivity {
         createAccB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                creatAcc();
+                createAcc();
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    void creatAcc() {
-        Intent intent = new Intent(this, CreateAccountActivity.class); // create the intent
-        startActivity(intent); // start the activity
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -83,10 +71,30 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.about_app) {
+            DialogFragment dialogFragment = new DialogFragment() {
+                @Override
+                public Dialog onCreateDialog(Bundle savedInstanceState) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(
+                            getActivity());
+                    builder.setTitle(R.string.About);
+                    builder.setMessage(R.string.About_Description);
+
+                    builder.setPositiveButton(android.R.string.ok,
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    dismiss();
+                                }
+                            });
+                    return builder.create();
+                }
+            };
+            dialogFragment.show(getFragmentManager(), null);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -104,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
             con.close();
 
             if (valid == 0) {
-//                Intent intent = new Intent( this, ProfileSchoolListAdapter.class ); // create the intent
-//                startActivity(intent); // start the activity
+                Intent intent = new Intent( this, UserProfileActivity.class ); // create the intent
+                startActivity(intent); // start the activity
             } else {
                 //do things like say bad password
             }
@@ -121,19 +129,10 @@ public class MainActivity extends AppCompatActivity {
                 mSQLException.printStackTrace();
             }
         }
+    }
 
-//        DialogFragment dialogFragment = new DialogFragment() {
-//            @Override
-//            public Dialog onCreateDialog(Bundle savedInstanceState) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(
-//                        getActivity());
-//                // Inflate View
-//                LayoutInflater inflater = getActivity().getLayoutInflater();
-//                View view = inflater.inflate(R.layout.top_student, null);
-//                builder.setView(view);
-//                return builder.create();
-//            }
-//        };
-//        dialogFragment.show(getFragmentManager(), null);
+    void createAcc() {
+        Intent intent = new Intent(this, CreateAccountActivity.class); // create the intent
+        startActivity(intent); // start the activity
     }
 }
