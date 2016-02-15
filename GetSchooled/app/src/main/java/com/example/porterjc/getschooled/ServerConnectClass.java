@@ -8,9 +8,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * Created by porterjc on 1/26/2016.
- */
 public class ServerConnectClass {
     String ip = "titan.csse.rose-hulman.edu";
     String clazz = "net.sourceforge.jtds.jdbc.Driver";
@@ -18,6 +15,7 @@ public class ServerConnectClass {
     String dataB = "GetSchooledDatabase";
     String usern = "GetSchooledUser";
     String passw = "getschooledpassword";
+    private static String mLoggedInUser;
 
     public Connection connect() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -43,5 +41,13 @@ public class ServerConnectClass {
 
     public String getIP() {
         return ip;
+    }
+
+    public static String getUser() {
+        return mLoggedInUser;
+    }
+
+    public static void setUser(String currentUser) {
+        mLoggedInUser = currentUser;
     }
 }

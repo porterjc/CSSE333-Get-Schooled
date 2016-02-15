@@ -34,6 +34,6 @@
         android:layout_below="@+id/schoolImageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:text="New Button"
+        android:text="@string/Enter"
         android:textColor="@color/textColor"/>
 </RelativeLayout>

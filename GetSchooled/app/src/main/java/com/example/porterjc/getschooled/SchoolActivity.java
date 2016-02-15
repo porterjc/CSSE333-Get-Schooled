@@ -5,32 +5,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.widget.ListView;
+public class SchoolActivity extends Activity {
 
-
-import java.sql.Connection;
-
-
-public class UserProfileActivity extends Activity {
-    private ProfileSchoolAdapter mSchoolAdapter;
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
-
-        ServerConnectClass scc = new ServerConnectClass();
-        Connection connection = scc.connect();
-        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
-
-        ListView test = (ListView)findViewById(R.id.schoolListView);
-
-        test.setAdapter(mSchoolAdapter);
-        }
-
+        setContentView(R.layout.activity_school);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_user_profile, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -40,6 +25,14 @@ public class UserProfileActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.about_app) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }

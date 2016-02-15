@@ -39,7 +39,7 @@
         android:src='@drawable/no_profile_picture_wilkin' />
 
     <ListView
-        android:id="@+id/schoolListView"
+        android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/schoolsProfileTextView"

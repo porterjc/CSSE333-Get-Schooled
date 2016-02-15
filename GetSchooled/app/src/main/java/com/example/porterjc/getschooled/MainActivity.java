@@ -1,12 +1,12 @@
 package com.example.porterjc.getschooled;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +20,7 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Types;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     ServerConnectClass connection;
     EditText username;
     EditText password;
@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         loginB = (Button) findViewById(R.id.login);
         createAccB = (Button) findViewById(R.id.newAccount);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         loginB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             con.close();
 
             if (valid == 0) {
+                ServerConnectClass.setUser(username.getText().toString());
                 Intent intent = new Intent( this, UserProfileActivity.class ); // create the intent
                 startActivity(intent); // start the activity
             } else {
