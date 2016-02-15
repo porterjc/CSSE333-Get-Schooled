@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
     ServerConnectClass connection;
     EditText username;
     EditText password;
+    EditText email;
     Button loginB;
     Button createAccB;
 
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
         connection = new ServerConnectClass();
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
+        email = (EditText)findViewById(R.id.email);
         loginB = (Button) findViewById(R.id.login);
         createAccB = (Button) findViewById(R.id.newAccount);
 
@@ -98,11 +100,13 @@ public class MainActivity extends Activity {
 
     public void login(Connection con) {
         try {
-            CallableStatement statement = con.prepareCall("{? = call [dbo].[AccountLoginCheck](?, ?)}");
+            CallableStatement statement = con.prepareCall("{? = call [dbo].[AccountLoginCheck](?, ?, ?)}");
             statement.registerOutParameter(1, Types.INTEGER);
-            statement.setString(2, username.getText().toString());
-            statement.setString(3, password.getText().toString());
-            boolean rs = statement.execute();
+            statement.setString(2, email.getText().toString());
+            statement.setString(3, username.getText().toString());
+            statement.setString(4, password.getText().toString());
+
+            statement.execute();
 
             int valid = statement.getInt(1);
 
