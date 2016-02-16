@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLClientInfoException;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 
 
@@ -30,14 +31,18 @@ public class ProfileSchoolAdapter extends ArrayAdapter<SchoolObject> {
 
     private void getSchoolData() {
         try {
-            CallableStatement statement = mConnection.prepareCall("{SELECT [dbo].[GetSchoolsByUser](?)}");
-            statement.setString(1, ServerConnectClass.getUser());
-            ResultSet schools = statement.executeQuery();
+            CallableStatement statement = mConnection.prepareCall("{call [dbo].[GetSchoolsForUser](?, ?, ?)}");
+            statement.registerOutParameter(1, Types.VARCHAR);
+            statement.registerOutParameter(2, Types.VARCHAR);
+            statement.setString(3, ServerConnectClass.getUser());
+            statement.execute();
+            ResultSet schools = statement.getResultSet();
             statement.close();
             mConnection.close();
 
             while (schools.next()) {
-                schoolInfo.add(schools.getString(1));
+                System.out.println(schools.getString(1));
+                //schoolInfo.add(schools.getString(1));
 //                schoolInfo.add(schools.getString(2));
             }
 
