@@ -22,8 +22,9 @@
     <string name="Change_Profile_Picture">Change Profile Picture</string>
     <string name="Delete_Account">Delete Account</string>
     <string name="Create_New_School">Create a School</string>
-
-
+    <string name="Classes">Classes</string>
+    <string name="Faculty">Faculty</string>
+    <string name="Students">Students</string>
 
 
 

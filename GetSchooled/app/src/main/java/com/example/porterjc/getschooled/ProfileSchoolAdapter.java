@@ -23,7 +23,7 @@ public class ProfileSchoolAdapter extends ArrayAdapter<SchoolObject> {
     private ArrayList<String> schoolInfo = new ArrayList<>();
 
     public ProfileSchoolAdapter(Context context, int resource, Connection connection) {
-        super(context,  resource, android.R.id.text1);
+        super(context,  resource);
         mConnection = connection;
         getSchoolData();
     }

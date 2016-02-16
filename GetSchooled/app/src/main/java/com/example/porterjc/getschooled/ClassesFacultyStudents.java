@@ -1,39 +1,52 @@
 package com.example.porterjc.getschooled;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class SchoolActivity extends Activity {
+public class ClassesFacultyStudents extends Activity{
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_school);
+        setContentView(R.layout.activity_classes_faculty_students);
 
-        Button enterButton = (Button) findViewById(R.id.enterSchoolButton);
+        Button classesButton = (Button) findViewById(R.id.classesButton);
+        Button facultyButton = (Button) findViewById(R.id.facultyButton);
+        Button studentsButton = (Button) findViewById(R.id.studentsButton);
 
-        enterButton.setOnClickListener(new View.OnClickListener() {
+        classesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launch();
+                launchClassActivity();
+            }
+        });
+
+        facultyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchFacultyActivity();
+            }
+        });
+
+        studentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchStudentsActivity();
             }
         });
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_school, menu);
-
-        //TODO
-
+        getMenuInflater().inflate(R.menu.menu_classes_faculty_students, menu);
         return true;
     }
 
@@ -52,10 +65,23 @@ public class SchoolActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void launch() {
-        Intent classesFacultyStudents = new Intent(this, ClassesFacultyStudents.class);
-        startActivity(classesFacultyStudents);
+    //TODO
+
+    private void launchClassActivity() {
+
     }
+
+    private void launchFacultyActivity() {
+
+    }
+
+    private void launchStudentsActivity() {
+
+    }
+
+
+
+
 
 
 }

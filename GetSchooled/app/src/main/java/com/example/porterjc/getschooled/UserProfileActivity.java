@@ -20,9 +20,10 @@ public class UserProfileActivity extends Activity {
 
         ServerConnectClass scc = new ServerConnectClass();
         Connection connection = scc.connect();
-        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
 
         ListView test = (ListView)findViewById(R.id.listView);
+
+        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
 
         test.setAdapter(mSchoolAdapter);
         }
