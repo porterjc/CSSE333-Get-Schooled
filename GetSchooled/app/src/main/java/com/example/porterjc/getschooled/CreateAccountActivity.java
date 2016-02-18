@@ -16,6 +16,9 @@ import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Types;
 
+/**
+ * Created by porterjc on 2/11/2016.
+ */
 public class CreateAccountActivity extends Activity {
     ServerConnectClass connection;
     EditText username;
@@ -59,7 +62,7 @@ public class CreateAccountActivity extends Activity {
             statement.setString(2, username.getText().toString());
             statement.setString(3, password.getText().toString());
             statement.setString(4, email.getText().toString());
-            statement.setString(5, profilePicture.getText().toString());
+            statement.setString(5,null);
             boolean rs = statement.execute();
 
             int valid = statement.getInt(1);

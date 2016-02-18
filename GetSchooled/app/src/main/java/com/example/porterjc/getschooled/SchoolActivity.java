@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class SchoolActivity extends Activity {
 
@@ -17,6 +18,9 @@ public class SchoolActivity extends Activity {
         setContentView(R.layout.activity_school);
 
         Button enterButton = (Button) findViewById(R.id.enterSchoolButton);
+        ImageView schoolImage = (ImageView) findViewById(R.id.schoolImageView);
+        ImageView school = (ImageView) findViewById(R.id.schoolProfilePictureListViewImageView);
+        schoolImage.setImageDrawable(school.getDrawable());
 
         enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
