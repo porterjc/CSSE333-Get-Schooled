@@ -1,5 +1,6 @@
 package com.example.porterjc.getschooled;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import java.sql.Types;
 /**
  * Created by porterjc on 2/11/2016.
  */
-public class CreateAccountActivity extends AppCompatActivity{
+public class CreateAccountActivity extends Activity {
     ServerConnectClass connection;
     EditText username;
     EditText password;
@@ -61,7 +62,7 @@ public class CreateAccountActivity extends AppCompatActivity{
             statement.setString(2, username.getText().toString());
             statement.setString(3, password.getText().toString());
             statement.setString(4, email.getText().toString());
-            statement.setString(5, profilePicture.getText().toString());
+            statement.setString(5,null);
             boolean rs = statement.execute();
 
             int valid = statement.getInt(1);

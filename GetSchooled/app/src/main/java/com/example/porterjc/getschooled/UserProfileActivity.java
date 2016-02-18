@@ -9,32 +9,35 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 
 public class UserProfileActivity extends Activity {
     ArrayList<SchoolObject> mSchools;
+    ProfileSchoolAdapter mSchoolAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-//        ServerConnectClass scc = new ServerConnectClass();
-//        Connection connection = scc.connect();
+        ServerConnectClass scc = new ServerConnectClass();
+        Connection connection = scc.connect();
 
         ListView test = (ListView) findViewById(R.id.listView);
 
         mSchools = new ArrayList<>();
 
         mSchools.add(new SchoolObject("Rose-Hulman", R.drawable.rose_hulman));
-        mSchools.add(new SchoolObject("Mount Saint Mary Academy", R.drawable.mount_saint_mary_academy));
+        mSchools.add(new SchoolObject("Mount Saint Mary Academy", R.drawable.mount_saint_mary_academy1));
 
-        ProfileSchoolAdapter schoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, mSchools);
-        test.setAdapter(schoolAdapter);
+//        ProfileSchoolAdapter schoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, mSchools);
+//        test.setAdapter(schoolAdapter);
 
 
-//        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
-//        test.setAdapter(mSchoolAdapter);
+
+        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
+        test.setAdapter(mSchoolAdapter);
     }
 
     @Override
