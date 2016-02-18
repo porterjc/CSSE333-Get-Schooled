@@ -1,5 +1,6 @@
 package com.example.porterjc.getschooled;
 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,25 +9,33 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 
-import java.sql.Connection;
+import java.util.ArrayList;
 
 
 public class UserProfileActivity extends Activity {
-    private ProfileSchoolAdapter mSchoolAdapter;
+    ArrayList<SchoolObject> mSchools;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        ServerConnectClass scc = new ServerConnectClass();
-        Connection connection = scc.connect();
+//        ServerConnectClass scc = new ServerConnectClass();
+//        Connection connection = scc.connect();
 
-        ListView test = (ListView)findViewById(R.id.listView);
+        ListView test = (ListView) findViewById(R.id.listView);
 
-        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
+        mSchools = new ArrayList<>();
 
-        test.setAdapter(mSchoolAdapter);
-        }
+        mSchools.add(new SchoolObject("Rose-Hulman", R.drawable.rose_hulman));
+        mSchools.add(new SchoolObject("Mount Saint Mary Academy", R.drawable.mount_saint_mary_academy));
+
+        ProfileSchoolAdapter schoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, mSchools);
+        test.setAdapter(schoolAdapter);
+
+
+//        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
+//        test.setAdapter(mSchoolAdapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,6 +49,14 @@ public class UserProfileActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+
+        switch(id){
+            case (R.id.change_password):
+        }
+
+
+        //TODO
 
         return super.onOptionsItemSelected(item);
     }

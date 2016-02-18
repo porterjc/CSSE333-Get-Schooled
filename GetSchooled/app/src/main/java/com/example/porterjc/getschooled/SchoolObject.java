@@ -6,13 +6,13 @@ package com.example.porterjc.getschooled;
 public class SchoolObject {
 
     public String mSchoolName;
-    public String mSchoolPictureAddress;
+    public int mSchoolPictureAddress;
 
     public SchoolObject() {
         super();
     }
 
-    public SchoolObject(String schoolName, String pictureAddress) {
+    public SchoolObject(String schoolName, int pictureAddress) {
         mSchoolName = schoolName;
         mSchoolPictureAddress = pictureAddress;
     }

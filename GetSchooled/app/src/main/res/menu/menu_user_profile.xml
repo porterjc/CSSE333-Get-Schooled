@@ -6,7 +6,7 @@
     <item
         android:id="@+id/createNewSchool"
         android:title="@string/Create_New_School"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="collapseActionView" />
 
     <item
         android:id="@+id/change_password"
@@ -20,4 +20,9 @@
         android:id="@+id/deleteAccount"
         android:title="@string/Delete_Account"
         app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/logout"
+        android:title="@string/Logout"
+        app:showAsAction="ifRoom" />
 </menu>
