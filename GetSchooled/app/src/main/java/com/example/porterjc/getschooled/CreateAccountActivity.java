@@ -1,5 +1,6 @@
 package com.example.porterjc.getschooled;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +16,7 @@ import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Types;
 
-/**
- * Created by porterjc on 2/11/2016.
- */
-public class CreateAccountActivity extends AppCompatActivity{
+public class CreateAccountActivity extends Activity {
     ServerConnectClass connection;
     EditText username;
     EditText password;

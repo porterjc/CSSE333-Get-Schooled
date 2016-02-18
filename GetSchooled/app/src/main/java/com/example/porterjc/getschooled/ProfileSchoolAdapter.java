@@ -29,6 +29,7 @@ public class ProfileSchoolAdapter extends ArrayAdapter<SchoolObject> {
     ArrayList<SchoolObject> schools = null;
     TextView mSchoolNameTextView;
     ImageView mSchoolImageView;
+    int mNoPicture = 0;
 
     public ProfileSchoolAdapter(Context context, int layoutResourceId, ArrayList<SchoolObject> schools) {
         super(context, layoutResourceId, schools);
@@ -49,13 +50,22 @@ public class ProfileSchoolAdapter extends ArrayAdapter<SchoolObject> {
         }
         SchoolObject school = schools.get(position);
         mSchoolNameTextView.setText(school.mSchoolName);
-        mSchoolImageView.setImageResource(school.mSchoolPictureAddress);
+
+        if(school.mSchoolPictureAddress == mNoPicture) {
+            mSchoolImageView.setImageResource(R.drawable.no_image_available);
+        }
+        else {
+            mSchoolImageView.setImageResource(school.mSchoolPictureAddress);
+        }
         return row;
     }
 
 
+    public SchoolObject getItem(int position) {
+        return schools.get(position);
+    }
 
-//    public ProfileSchoolAdapter(Context context, int resource, Connection connection) {
+    //    public ProfileSchoolAdapter(Context context, int resource, Connection connection) {
 //        super(context,  resource);
 //        mConnection = connection;
 //        getSchoolData();
