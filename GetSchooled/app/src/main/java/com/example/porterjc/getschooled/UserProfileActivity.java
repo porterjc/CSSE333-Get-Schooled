@@ -32,6 +32,7 @@ import java.sql.Statement;
 public class UserProfileActivity extends Activity {
     ProfileSchoolAdapter mSchoolAdapter;
     Connection mConnection;
+    private int logOutNumber = 72;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -279,20 +280,33 @@ public class UserProfileActivity extends Activity {
                 View view = inflater.inflate(R.layout.dialog_delete_account, null);
                 builder.setView(view);
 
-                EditText usernameEditText = (EditText) view.findViewById(R.id.deleteAccountUsernameEditText);
-                final String username = usernameEditText.getText().toString();
+                final EditText usernameEditText = (EditText) view.findViewById(R.id.deleteAccountUsernameEditText);
 
-                EditText emailEditText = (EditText) view.findViewById(R.id.deleteAccountEmailEditText);
-                final String email = emailEditText.getText().toString();
+                final EditText emailEditText = (EditText) view.findViewById(R.id.deleteAccountEmailEditText);
 
                 Button deleteAccountButton = (Button) view.findViewById(R.id.deleteAccountButton);
 
                 deleteAccountButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        String username = usernameEditText.getText().toString();
+                        String email = emailEditText.getText().toString();
 
-                        //TODO: Remove Account from Database
+                        if (username != ServerConnectClass.getUser()) {
+                            dismiss();
+                        }
 
+                        try {
+                            CallableStatement statement = mConnection.prepareCall("{call [dbo].[DeleteAccount](?, ?)}");
+                            statement.setString(1, username);
+                            statement.setString(2, email);
+
+                            statement.executeUpdate();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                        finish();
+                        dismiss();
                     }
                 });
 
@@ -321,7 +335,12 @@ public class UserProfileActivity extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO: LogOut
+                        ServerConnectClass.setUser(null);
+                        Intent intent = new Intent (getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
                         dismiss();
+                        finish();
+                        setResult(72);
                     }
                 });
                 return builder.create();

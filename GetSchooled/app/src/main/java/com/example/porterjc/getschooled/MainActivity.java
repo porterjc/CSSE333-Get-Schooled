@@ -137,4 +137,14 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, CreateAccountActivity.class); // create the intent
         startActivity(intent); // start the activity
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(resultCode) {
+            case 72:
+                this.finishActivity(72);            // to close this activity
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }
