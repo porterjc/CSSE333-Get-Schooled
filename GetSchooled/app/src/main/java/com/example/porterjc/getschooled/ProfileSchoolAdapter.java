@@ -47,7 +47,7 @@ public class ProfileSchoolAdapter extends BaseAdapter {
 
             ResultSet schools = statement.executeQuery("SELECT [school_name], [school_image]\n" +
                     "\tFROM [GetSchooledDataBase].[dbo].[School]\n" +
-                    "\tWHERE [mUsername] = '" + ServerConnectClass.getUser() + "';");
+                    "\tWHERE [username] = '" + ServerConnectClass.getUser() + "';");
 
             while (schools.next()) {
                 SchoolObject school = new SchoolObject(schools.getString(1), schools.getString(2));

@@ -58,13 +58,17 @@ public class UserProfileActivity extends Activity {
             return true;
         } else if (id == R.id.change_password) {
             changePasswordDialog();
+            return true;
         } else if (id == R.id.change_profile_picture) {
             changeProfilePicture();
+            return true;
+        } else if( id == R.id.deleteAccount) {
+            deleteAccountDialog();
+            return true;
+        } else if (id == R.id.logout) {
+            logout();
+            return true;
         }
-
-
-        //TODO
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -187,8 +191,64 @@ public class UserProfileActivity extends Activity {
         dialogFragment.show(getFragmentManager(), null);
     }
 
+    private void deleteAccountDialog() {
+        DialogFragment dialogFragment = new DialogFragment() {
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                // Inflate View
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                View view = inflater.inflate(R.layout.dialog_delete_account, null);
+                builder.setView(view);
 
+                EditText usernameEditText = (EditText) view.findViewById(R.id.deleteAccountUsernameEditText);
+                final String username = usernameEditText.getText().toString();
 
+                EditText emailEditText = (EditText) view.findViewById(R.id.deleteAccountEmailEditText);
+                final String email = emailEditText.getText().toString();
 
+                Button deleteAccountButton = (Button) view.findViewById(R.id.deleteAccountButton);
 
+                deleteAccountButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        //TODO: Remove Account from Database
+
+                    }
+                });
+
+                return builder.create();
+            }
+        };
+        dialogFragment.show(getFragmentManager(), null);
+    }
+
+    private void logout() {
+        DialogFragment dialogFragment = new DialogFragment() {
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(R.string.Logout);
+                builder.setMessage(R.string.Logout_Message);
+
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dismiss();
+                    }
+                });
+
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //TODO: LogOut
+                        dismiss();
+                    }
+                });
+                return builder.create();
+            }
+        };
+        dialogFragment.show(getFragmentManager(), null);
+    }
 }

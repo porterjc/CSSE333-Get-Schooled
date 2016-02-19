@@ -15,49 +15,36 @@
         android:textColor="@color/textColor" />
 
     <EditText
-        android:id="@+id/changePasswordUsername"
+        android:id="@+id/deleteAccountUsernameEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:inputType="textPassword"
-        android:textColor="@color/textColor" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="@string/Enter_Old_Password"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/textColor" />
-
-    <EditText
-        android:id="@+id/changePasswordOldPassword"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:inputType="textPassword"
+        android:inputType="none"
         android:textColor="@color/textColor" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-
         android:layout_marginTop="20dp"
-        android:text="@string/Enter_New_Password"
+        android:text="@string/Enter_Email"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/textColor" />
 
     <EditText
-        android:id="@+id/changePasswordNewPassword"
+        android:id="@+id/deleteAccountEmailEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/textColor" />
+
+    <Button
+        android:id="@+id/deleteAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:inputType="textPassword"
+        android:text="@string/Delete_Account"
         android:textColor="@color/textColor" />
 </LinearLayout>
