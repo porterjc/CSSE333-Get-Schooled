@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
+        android:id="@+id/dialogTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Name_Your_School"
-        android:id="@+id/dialogTextView"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/textColor"/>
+        android:text="@string/Name_Your_School"
+        android:textColor="@color/textColor" />
 
     <EditText
+        android:id="@+id/dialogEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dialogEditText"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/textColor"/>
+        android:textColor="@color/textColor" />
 </LinearLayout>

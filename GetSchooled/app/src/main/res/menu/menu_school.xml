@@ -5,15 +5,15 @@
     tools:context="com.example.porterjc.getschooled.UserProfileActivity">
 
     <item
-        android:id="@+id/change_password"
-        android:title="@string/Change_Password"
+        android:id="@+id/edit_school_name"
+        android:title="@string/Change_School_Name"
         app:showAsAction="collapseActionView" />
     <item
-        android:id="@+id/change_profile_picture"
+        android:id="@+id/change_school_picture"
         android:title="@string/Change_Profile_Picture"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/deleteAccount"
-        android:title="@string/Delete_Account"
+        android:title="@string/Change_School_Picture"
         app:showAsAction="collapseActionView" />
 </menu>

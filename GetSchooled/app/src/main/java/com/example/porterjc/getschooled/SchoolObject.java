@@ -6,17 +6,21 @@ package com.example.porterjc.getschooled;
 public class SchoolObject {
 
     public String mSchoolName;
-    public int mSchoolPictureAddress;
+    public String mSchoolPictureAddress;
 
     public SchoolObject() {
         super();
     }
 
-    public SchoolObject(String schoolName, int pictureAddress) {
+    public SchoolObject(String schoolName, String pictureAddress) {
         mSchoolName = schoolName;
         mSchoolPictureAddress = pictureAddress;
     }
 
-    // Add Getters & Setters
+    //TODO: Add Getters & Setters
+
+    public String getSchoolName() {
+        return mSchoolName;
+    }
 
 }

@@ -27,6 +27,9 @@
     <string name="Students">Students</string>
     <string name="Logout">Logout</string>
     <string name="Name_Your_School">Please Enter a Name for Your New School</string>
+    <string name="Edit_Your_School_Name">Please Enter a New Name for Your School</string>
+    <string name="Change_School_Name">Change School Name</string>
+    <string name="Change_School_Picture">Change School Picture</string>
 
 
 
