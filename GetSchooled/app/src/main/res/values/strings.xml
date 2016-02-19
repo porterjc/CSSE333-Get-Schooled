@@ -30,6 +30,12 @@
     <string name="Edit_Your_School_Name">Please Enter a New Name for Your School</string>
     <string name="Change_School_Name">Change School Name</string>
     <string name="Change_School_Picture">Change School Picture</string>
+    <string name="Enter_Username">Please Enter Your Username</string>
+    <string name="Enter_Old_Password">Please Enter Your Old Password</string>
+    <string name="Enter_New_Password">Please Enter A New Password</string>
+    <string name="Change_User_Profile_Image">Please Enter A Link to a New Profile Picture</string>
+
+
 
 
 

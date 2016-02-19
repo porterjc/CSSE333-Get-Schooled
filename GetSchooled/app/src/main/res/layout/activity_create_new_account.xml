@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
-        android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/passwordTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/passwordTextView"
-        android:layout_marginTop="23dp"
+        android:layout_gravity="center_horizontal"
         android:text="@string/Username"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/textColor" />
+        android:textColor="@color/textColor"
+        android:inputType="none"/>
 
     <EditText
         android:id="@+id/usernameEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameTextView"
-        android:layout_centerHorizontal="true"
-        android:inputType="none" />
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/textColor" />
 
     <TextView
-        android:id="@+id/passwordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:text="@string/Password"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/textColor" />
@@ -39,17 +35,15 @@
         android:id="@+id/passwordEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordTextView"
-        android:layout_centerHorizontal="true"
-        android:inputType="textPassword" />
+        android:layout_gravity="center_horizontal"
+        android:inputType="textPassword"
+        android:textColor="@color/textColor" />
 
     <TextView
-        android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:text="@string/Email"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/textColor" />
@@ -58,39 +52,33 @@
         android:id="@+id/emailEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/emailTextView"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:id="@+id/pictureEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/emailEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/Profile_Picture"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center_horizontal"
+        android:inputType="textEmailAddress"
         android:textColor="@color/textColor" />
 
-    <Button
-        android:id="@+id/createAccountButton"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="33dp"
-        android:text="@string/Create"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/Profile_Picture"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/textColor" />
 
     <EditText
         android:id="@+id/profilePictureEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pictureEditText"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="none" />
-</RelativeLayout>
+        android:layout_gravity="center_horizontal"
+        android:inputType="none"
+        android:textColor="@color/textColor" />
+
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/Create"
+        android:textColor="@color/textColor" />
+</LinearLayout>

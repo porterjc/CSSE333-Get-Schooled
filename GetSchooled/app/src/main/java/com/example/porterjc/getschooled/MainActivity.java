@@ -118,7 +118,7 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent( this, UserProfileActivity.class ); // create the intent
                 startActivity(intent); // start the activity
             } else {
-                //do things like say bad password
+                //do things like say bad mPassword
             }
 
         } catch (SQLException mSQLException) {

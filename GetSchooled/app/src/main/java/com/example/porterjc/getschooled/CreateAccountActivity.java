@@ -3,12 +3,9 @@ package com.example.porterjc.getschooled;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLClientInfoException;
@@ -16,31 +13,29 @@ import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Types;
 
-/**
- * Created by porterjc on 2/11/2016.
- */
 public class CreateAccountActivity extends Activity {
-    ServerConnectClass connection;
-    EditText username;
-    EditText password;
+    ServerConnectClass mConnection;
+    EditText mUsername;
+    EditText mPassword;
     EditText email;
-    Button createAccB;
-    EditText profilePicture;
+    Button mCreateAccountButton;
+    EditText mProfilePicture;
+
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_account);
-        connection = new ServerConnectClass();
-        username = (EditText) findViewById(R.id.usernameEditText);
-        password = (EditText)findViewById(R.id.passwordEditText);
+
+        mConnection = new ServerConnectClass();
+        mUsername = (EditText) findViewById(R.id.usernameEditText);
+        mPassword = (EditText)findViewById(R.id.passwordEditText);
         email = (EditText)findViewById(R.id.emailEditText);
-        createAccB = (Button)findViewById(R.id.createAccountButton);
-        profilePicture = (EditText)findViewById(R.id.profilePictureEditText);
+        mCreateAccountButton = (Button)findViewById(R.id.createAccountButton);
+        mProfilePicture = (EditText)findViewById(R.id.profilePictureEditText);
 
-
-        createAccB.setOnClickListener(new View.OnClickListener() {
+        mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Connection con = connection.connect();
+                Connection con = mConnection.connect();
                 if (con != null) {
                     createAcc(con);
                 }
@@ -48,23 +43,17 @@ public class CreateAccountActivity extends Activity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
     private void createAcc(Connection con) {
         try {
             CallableStatement statement = con.prepareCall("{? = call [dbo].[CreateAccount](?, ?, ?, ?)}");
+
             statement.registerOutParameter(1, Types.INTEGER);
-            statement.setString(2, username.getText().toString());
-            statement.setString(3, password.getText().toString());
+            statement.setString(2, mUsername.getText().toString());
+            statement.setString(3, mPassword.getText().toString());
             statement.setString(4, email.getText().toString());
             statement.setString(5,null);
-            boolean rs = statement.execute();
 
+            boolean rs = statement.execute();
             int valid = statement.getInt(1);
 
             statement.close();
@@ -76,7 +65,7 @@ public class CreateAccountActivity extends Activity {
                 startActivity(intent); // start the activity
             } else {
                 System.out.println("Something is wrong with the input.");
-                //do things like say bad password
+                //do things like say bad Password
             }
 
         }

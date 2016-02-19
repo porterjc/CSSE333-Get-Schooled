@@ -29,7 +29,7 @@ public class ServerConnectClass {
            // Class.forName(micClazz);
             //System.out.println("This works right?");
             URL = "jdbc:jtds:sqlserver://" + ip + "/"
-                     + dataB + ";prepareSQL=0"; //user=GetSchooledUser;password=getschooledpassword;";
+                     + dataB + ";prepareSQL=0"; //user=GetSchooledUser;mPassword=getschooledpassword;";
             connection = DriverManager.getConnection(URL, usern, passw);
         } catch (SQLException se) {
             Log.e("ERRO", se.getMessage());

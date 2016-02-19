@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.sql.Connection;
 
 public class UserProfileActivity extends Activity {
@@ -32,19 +34,10 @@ public class UserProfileActivity extends Activity {
 
         ListView test = (ListView) findViewById(R.id.listView);
 
+        //TODO: OnItemClickListener
+
         mSchoolAdapter = new ProfileSchoolAdapter(this, connection);
-
         test.setAdapter(mSchoolAdapter);
-
-        //        mSchools = new ArrayList<>();
-
-//        mSchools.add(new SchoolObject("Rose-Hulman", R.drawable.rose_hulman));
-//        mSchools.add(new SchoolObject("Mount Saint Mary Academy", R.drawable.mount_saint_mary_academy1));
-
-//        ProfileSchoolAdapter schoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, mSchools);
-//        test.setAdapter(schoolAdapter);
-
-//        mSchoolAdapter = new ProfileSchoolAdapter(this, R.layout.list_view_item_user_profile, connection);
     }
 
     @Override
@@ -65,6 +58,8 @@ public class UserProfileActivity extends Activity {
             return true;
         } else if (id == R.id.change_password) {
             changePasswordDialog();
+        } else if (id == R.id.change_profile_picture) {
+            changeProfilePicture();
         }
 
 
@@ -77,8 +72,7 @@ public class UserProfileActivity extends Activity {
         DialogFragment dialogFragment = new DialogFragment() {
             @Override
             public Dialog onCreateDialog(Bundle savedInstanceState) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        getActivity());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 // Inflate View
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 View view = inflater.inflate(R.layout.dialog_add, null);
@@ -87,11 +81,16 @@ public class UserProfileActivity extends Activity {
                 EditText newSchoolNameEditText = (EditText) view.findViewById(R.id.dialogEditText);
                 final String newSchoolName = newSchoolNameEditText.getText().toString();
 
-                builder.setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dismiss();
+                    }
+                });
+
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
+                            public void onClick(DialogInterface dialog, int which) {
 
                                 SchoolObject newSchool = new SchoolObject(newSchoolName, null);
 
@@ -111,20 +110,32 @@ public class UserProfileActivity extends Activity {
         DialogFragment dialogFragment = new DialogFragment() {
             @Override
             public Dialog onCreateDialog(Bundle savedInstanceState) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        getActivity());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 // Inflate View
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 View view = inflater.inflate(R.layout.dialog_change_password, null);
                 builder.setView(view);
 
-                builder.setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
+                EditText usernameEditText = (EditText) view.findViewById(R.id.changePasswordUsername);
+                EditText oldPasswordEditText = (EditText) view.findViewById(R.id.changePasswordOldPassword);
+                EditText newPasswordEditText = (EditText) view.findViewById(R.id.changePasswordNewPassword);
 
-                                //TODO: Add to Database
+                final String  username = usernameEditText.getText().toString();
+                final  String oldPassword = oldPasswordEditText.getText().toString();
+                final String newPassword = newPasswordEditText.getText().toString();
+
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dismiss();
+                    }
+                });
+
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //TODO: Check Username & Password with Database and then change mPassword in Database
 
                                 dismiss();
                             }
@@ -134,4 +145,50 @@ public class UserProfileActivity extends Activity {
         };
         dialogFragment.show(getFragmentManager(), null);
     }
+
+    private void changeProfilePicture() {
+        DialogFragment dialogFragment = new DialogFragment() {
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        getActivity());
+                // Inflate View
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                View view = inflater.inflate(R.layout.dialog_add, null);
+                builder.setView(view);
+
+                TextView textView = (TextView) view.findViewById(R.id.dialogTextView);
+                textView.setText(R.string.Change_User_Profile_Image);
+
+                EditText newProfilePictureEditText = (EditText) view.findViewById(R.id.dialogEditText);
+                final String newProfilePicture = newProfilePictureEditText.getText().toString();
+
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dismiss();
+                    }
+                });
+
+                builder.setPositiveButton(android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //TODO: Add Profile Picture to Database
+
+                                mSchoolAdapter.notifyDataSetChanged();
+                                dismiss();
+                            }
+                        });
+                return builder.create();
+            }
+        };
+        dialogFragment.show(getFragmentManager(), null);
+    }
+
+
+
+
+
 }
