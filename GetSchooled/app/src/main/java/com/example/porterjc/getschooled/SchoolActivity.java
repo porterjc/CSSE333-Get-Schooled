@@ -24,10 +24,18 @@ public class SchoolActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
 
-        Button enterButton = (Button) findViewById(R.id.enterSchoolButton);
+        Intent intent = getIntent();
+
+        String schoolNameIntentData = intent.getStringExtra("KEY_SCHOOL_NAME");
+        String schoolImageIntentData = intent.getStringExtra("KEY_SCHOOL_IMAGE");
+
+        TextView schoolNameTextView = (TextView) findViewById(R.id.schoolNameSchoolActivity);
         ImageView schoolImage = (ImageView) findViewById(R.id.schoolImageView);
-        ImageView school = (ImageView) findViewById(R.id.schoolProfilePictureListViewImageView);
-        schoolImage.setImageDrawable(school.getDrawable());
+
+        schoolNameTextView.setText(schoolNameIntentData);
+//        schoolImage.setImage
+
+        Button enterButton = (Button) findViewById(R.id.enterSchoolButton);
 
         enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,9 +43,13 @@ public class SchoolActivity extends Activity {
                 launch();
             }
         });
-
-
     }
+
+    private void launch() {
+        Intent classesFacultyStudents = new Intent(this, ClassesFacultyStudents.class);
+        startActivity(classesFacultyStudents);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -71,7 +83,7 @@ public class SchoolActivity extends Activity {
                         getActivity());
                 // Inflate View
                 LayoutInflater inflater = getActivity().getLayoutInflater();
-                View view = inflater.inflate(R.layout.dialog_add, null);
+                View view = inflater.inflate(R.layout.dialog_change_profile_picture, null);
                 builder.setView(view);
 
                 TextView editSchoolNameTextView = (TextView) view.findViewById(R.id.dialogTextView);
@@ -99,10 +111,6 @@ public class SchoolActivity extends Activity {
         dialogFragment.show(getFragmentManager(), null);
     }
 
-    private void launch() {
-        Intent classesFacultyStudents = new Intent(this, ClassesFacultyStudents.class);
-        startActivity(classesFacultyStudents);
-    }
 
 
 }

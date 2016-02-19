@@ -1,12 +1,21 @@
 package com.example.porterjc.getschooled;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLClientInfoException;
@@ -32,7 +41,7 @@ public class ProfileSchoolAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public SchoolObject getItem(int position) {
         return schoolInfo.get(position);
     }
 
@@ -46,11 +55,14 @@ public class ProfileSchoolAdapter extends BaseAdapter {
             Statement statement = mConnection.createStatement();
 
             ResultSet schools = statement.executeQuery("SELECT [school_name], [school_image]\n" +
-                    "\tFROM [GetSchooledDataBase].[dbo].[School]\n" +
+                    "\tFROM [GetSchooledDatabase].[dbo].[School]\n" +
                     "\tWHERE [username] = '" + ServerConnectClass.getUser() + "';");
 
             while (schools.next()) {
-                SchoolObject school = new SchoolObject(schools.getString(1), schools.getString(2));
+                String schoolName = schools.getString(1);
+                String schoolImageLink =  schools.getString(2);
+
+                SchoolObject school = new SchoolObject(schoolName, schoolImageLink);
                 schoolInfo.add(school);
             }
 
@@ -80,8 +92,21 @@ public class ProfileSchoolAdapter extends BaseAdapter {
         ImageView schoolImage = (ImageView) view.findViewById(R.id.schoolProfilePictureListViewImageView);
 
         schoolName.setText(schoolInfo.get(position).mSchoolName);
-//        schoolImage.set
 
+        if (schoolInfo.get(position).mSchoolPictureAddress != null) {
+            //Modified From: http://stackoverflow.com/questions/13969526/converting-image-from-url-to-bitmap
+            Bitmap bitmap = null;
+            URL url;
+            try {
+                url = new URL(schoolInfo.get(position).mSchoolPictureAddress);
+                bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            schoolImage.setImageBitmap(bitmap);
+        }
         return view;
     }
 }

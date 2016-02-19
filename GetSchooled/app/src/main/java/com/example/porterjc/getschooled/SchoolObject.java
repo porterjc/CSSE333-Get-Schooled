@@ -1,5 +1,7 @@
 package com.example.porterjc.getschooled;
 
+import java.net.URL;
+
 /**
  * Created by schmidkl on 2/9/2016.
  */
@@ -17,10 +19,11 @@ public class SchoolObject {
         mSchoolPictureAddress = pictureAddress;
     }
 
-    //TODO: Add Getters & Setters
-
     public String getSchoolName() {
         return mSchoolName;
     }
 
+    public String getSchoolPictureAddress() {
+        return mSchoolPictureAddress;
+    }
 }

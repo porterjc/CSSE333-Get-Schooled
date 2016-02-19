@@ -48,7 +48,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
-
         createAccB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

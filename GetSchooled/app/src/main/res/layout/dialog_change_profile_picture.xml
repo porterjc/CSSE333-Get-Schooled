@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/Name_Your_School"
+        android:text="@string/Change_User_Profile_Image"
         android:textColor="@color/textColor" />
 
     <EditText

@@ -41,7 +41,7 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="700dp"
         android:layout_below="@+id/schoolsProfileTextView"
         android:layout_centerHorizontal="true"
         android:layout_weight="1" />
